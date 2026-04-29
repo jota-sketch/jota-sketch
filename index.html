@@ -74,6 +74,38 @@
       100% { text-shadow: 0 0 10px #ff1a1a; }
     }
 
+
+  .hidden {
+  display: none;
+}
+
+#info {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  animation: zoomIn 1s ease forwards;
+}
+
+#info h2 {
+  font-size: 3rem;
+  color: #ff1a1a;
+  text-shadow: 0 0 20px #ff1a1a;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
   </style>
 </head>
 
@@ -86,12 +118,24 @@
     <div id="info" class="hidden">
   <h2>🔥 12 DE JUNHO - 22H 🔥</h2>
   <p>Local: Quadra da escola</p>
+
 </div>
 
 
 <button class="btn">Entrar</button>
 
   </div>
+
+  <script>
+const btn = document.querySelector('.btn');
+const container = document.querySelector('.container');
+const info = document.getElementById('info');
+
+btn.onclick = () => {
+  container.style.display = 'none';
+  info.classList.remove('hidden');
+};
+</script>
 
 </body>
 </html>
