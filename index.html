@@ -41,10 +41,23 @@ body {
 /* CARTAS */
 .card {
   position: fixed;
-  top: -50px;
-  font-size: 30px;
+  top: -80px;
+  width: 40px;
+  height: 60px;
+  background: white;
+  border-radius: 5px;
   animation: fall linear forwards;
-  opacity: 0.8;
+  z-index: -1;
+}
+
+.card::after {
+  content: "♦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: red;
 }
 
 @keyframes fall {
@@ -53,7 +66,7 @@ body {
   }
 }
 
-/* CENTRALIZA */
+/* TELA */
 .screen {
   position: fixed;
   width: 100%;
@@ -63,15 +76,29 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
 }
 
+/* TEXTO COM ENTRADA SUAVE */
 h1 {
   font-size: 4rem;
   color: #ff1a1a;
   text-shadow: 0 0 30px #ff1a1a;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.5s ease forwards;
 }
 
+p {
+  margin-top: 10px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* BOTÃO REDONDO + ANIMADO */
 .btn, .btn-voltar {
   margin-top: 30px;
   padding: 15px 40px;
@@ -79,11 +106,69 @@ h1 {
   background: transparent;
   color: white;
   cursor: pointer;
+  font-size: 1rem;
+
+  border-radius: 50px; /* 🔥 BOTÃO REDONDO */
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 1s;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* ANIMAÇÃO DE ENTRADA */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* BRILHO AUTOMÁTICO */
+.btn::before, .btn-voltar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.8),
+    transparent
+  );
+  animation: shine 2.5s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* HOVER */
+.btn:hover, .btn-voltar:hover {
+  background: #ff1a1a;
+  color: black;
+  transform: scale(1.1);
+}
+
+/* CLIQUE */
+.btn:active, .btn-voltar:active {
+  transform: scale(0.9);
 }
 
 /* TELA 2 */
 #info {
   display: none;
+}
+
+h2 {
+  font-size: 3rem;
+  color: #ff1a1a;
 }
 </style>
 </head>
@@ -93,13 +178,12 @@ h1 {
 <img class="bg" src="https://images.unsplash.com/photo-1511512578047-dfb367046420">
 <div class="overlay"></div>
 
-<!-- TELA 1 -->
 <div id="home" class="screen">
   <h1>PAREDÃO 2026</h1>
+  <p>Noite estilo cassino 🔥🎲</p>
   <button class="btn">SABER MAIS</button>
 </div>
 
-<!-- TELA 2 -->
 <div id="info" class="screen">
   <h2>🔥 12 DE JUNHO - 22H 🔥</h2>
   <button class="btn-voltar">VOLTAR</button>
@@ -121,27 +205,20 @@ voltar.onclick = () => {
   home.style.display = "flex";
 };
 
-/* GERADOR DE CARTAS */
-const symbols = ["♠","♥","♦","♣"];
-
+/* CARTAS */
 function createCard() {
   const card = document.createElement("div");
   card.classList.add("card");
 
-  card.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-
   card.style.left = Math.random() * 100 + "vw";
-  card.style.animationDuration = (3 + Math.random() * 5) + "s";
-  card.style.fontSize = (20 + Math.random() * 30) + "px";
+  card.style.animationDuration = (4 + Math.random() * 4) + "s";
 
   document.body.appendChild(card);
 
-  setTimeout(() => {
-    card.remove();
-  }, 8000);
+  setTimeout(() => card.remove(), 8000);
 }
 
-setInterval(createCard, 300);
+setInterval(createCard, 250);
 </script>
 
 </body>
