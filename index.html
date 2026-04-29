@@ -1,30 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Meu Perfil</title>
-    <link rel="stylesheet" href="style.css">
-</head> 
+  <meta charset="UTF-8">
+  <title>Paredão Insano</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: #ff1a1a;
+      text-shadow: 0 0 20px #ff1a1a;
+      animation: pulse 2s infinite;
+    }
+
+    p {
+      margin-top: 10px;
+      opacity: 0.7;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      border: 2px solid #ff1a1a;
+      color: white;
+      background: transparent;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff1a1a;
+      box-shadow: 0 0 20px #ff1a1a;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px #ff1a1a; }
+      50% { text-shadow: 0 0 30px #ff1a1a; }
+      100% { text-shadow: 0 0 10px #ff1a1a; }
+    }
+  </style>
+</head>
+
 <body>
 
-    <div class="card">
-        <img src="foto.jpg" alt="Minha foto" width="150">
+  <div class="container">
+    <h1>PAREDÃO 2026</h1>
+    <p>O evento mais pesado da escola 🔊🔥</p>
+    <button class="btn">Entrar</button>
+  </div>
 
-        <h1>Oi, eu sou jota!</h1>
-
-        <h1 id="titulo">
-            <p id="texto-digitando"></p>
-        </h1>
-
-        <!-- Autor abaixo do "say my name" -->
-        <p class="autor">- heisenberg</p>
-
-        <a href="https://www.tiktok.com/@jota.oliznx" target="_blank" class="btn-tiktok">
-            Conheça meu perfil no TikTok! 🚀
-        </a>
-
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
