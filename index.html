@@ -73,35 +73,7 @@
       50% { text-shadow: 0 0 30px #ff1a1a; }
       100% { text-shadow: 0 0 10px #ff1a1a; }
     }
-    
-    {
-    <audio id="music">
-  <source src="musica.mp3" type="audio/mpeg">
-    </audio>
-  }
 
-  <script>
-const btn = document.querySelector('.btn');
-const music = document.getElementById('music');
-
-btn.onclick = () => {
-  music.currentTime = 10; // começa nos 10s
-  music.volume = 1;
-  music.play();
-
-  // parar nos 36s com fade
-  const intervalo = setInterval(() => {
-    if (music.currentTime >= 33) { // começa o fade antes de parar
-      music.volume -= 0.05;
-    }
-
-    if (music.currentTime >= 36) {
-      music.pause();
-      clearInterval(intervalo);
-    }
-  }, 200);
-};
-</script>
   </style>
 </head>
 
@@ -109,18 +81,11 @@ btn.onclick = () => {
 
   <div class="container">
     <h1>PAREDÃO 2026</h1>
-    <p>O evento mais pesado da escola 🔊🔥</p>
+    <p>Domiciano Esteves🔊🔥</p>
 
 
 
 <button class="btn">Entrar</button>
-
-
-<script>
-document.querySelector('.btn').onclick = () => {
-  document.getElementById('music').play();
-};
-</script>
 
   </div>
 
