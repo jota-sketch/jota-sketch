@@ -16,11 +16,40 @@
 }
 
 body {
-  background: #0a0a0a;
   color: white;
+  overflow: hidden;
 }
 
-/* CENTRALIZA TUDO NA TELA */
+/* FUNDO (AGORA ONLINE, NÃO TEM COMO DAR ERRO) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: url("https://images.unsplash.com/photo-1511512578047-dfb367046420") center/cover no-repeat;
+  filter: brightness(0.35);
+
+  z-index: -2;
+}
+
+/* OVERLAY VERMELHO */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(255, 0, 0, 0.25);
+
+  z-index: -1;
+}
+
+/* CENTRALIZA */
 .screen {
   position: fixed;
   top: 0;
@@ -36,25 +65,22 @@ body {
 }
 
 /* TELA 1 */
-#home {
-  animation: fadeIn 1.5s ease;
-}
-
 #home h1 {
   font-size: 4rem;
   color: #ff1a1a;
-  text-shadow: 0 0 20px #ff1a1a;
+  text-shadow: 0 0 30px #ff1a1a;
   animation: pulse 2s infinite;
 }
 
 #home p {
   margin-top: 10px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-.btn {
+/* BOTÕES */
+.btn, .btn-voltar {
   margin-top: 30px;
-  padding: 12px 30px;
+  padding: 15px 40px;
   border: 2px solid #ff1a1a;
   color: white;
   background: transparent;
@@ -62,9 +88,9 @@ body {
   transition: 0.3s;
 }
 
-.btn:hover {
+.btn:hover, .btn-voltar:hover {
   background: #ff1a1a;
-  box-shadow: 0 0 20px #ff1a1a;
+  box-shadow: 0 0 25px #ff1a1a;
   transform: scale(1.05);
 }
 
@@ -82,19 +108,14 @@ body {
 
 #info p {
   margin-top: 10px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* ANIMAÇÕES */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @keyframes pulse {
-  0% { text-shadow: 0 0 10px #ff1a1a; }
-  50% { text-shadow: 0 0 30px #ff1a1a; }
-  100% { text-shadow: 0 0 10px #ff1a1a; }
+  0% { text-shadow: 0 0 15px #ff1a1a; }
+  50% { text-shadow: 0 0 40px #ff1a1a; }
+  100% { text-shadow: 0 0 15px #ff1a1a; }
 }
 
 @keyframes zoomIn {
@@ -109,24 +130,32 @@ body {
 <!-- TELA 1 -->
 <div id="home" class="screen">
   <h1>PAREDÃO 2026</h1>
-  <p>O evento mais pesado da escola 🔊🔥</p>
+  <p>Noite estilo cassino 🔥🎲</p>
   <button class="btn">SABER MAIS</button>
 </div>
 
 <!-- TELA 2 -->
 <div id="info" class="screen">
   <h2>🔥 12 DE JUNHO - 22H 🔥</h2>
-  <p>Local: Quadra da escola</p>
+  <p>Quadra da escola</p>
+  <button class="btn-voltar">VOLTAR</button>
 </div>
 
 <script>
 const btn = document.querySelector('.btn');
+const voltar = document.querySelector('.btn-voltar');
+
 const home = document.getElementById('home');
 const info = document.getElementById('info');
 
 btn.onclick = () => {
   home.style.display = "none";
   info.style.display = "flex";
+};
+
+voltar.onclick = () => {
+  info.style.display = "none";
+  home.style.display = "flex";
 };
 </script>
 
