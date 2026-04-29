@@ -81,7 +81,19 @@
   <div class="container">
     <h1>PAREDÃO 2026</h1>
     <p>O evento mais pesado da escola 🔊🔥</p>
-    <button class="btn">Entrar</button>
+
+    <audio id="music" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+  <button class="btn">Entrar</button>
+
+<script>
+document.querySelector('.btn').onclick = () => {
+  document.getElementById('music').play();
+};
+</script>
+
   </div>
 
 </body>
